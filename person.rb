@@ -5,8 +5,8 @@ class Person
     @age = int
     @parent_permission = parent_permission
   end
-  attr_reader :id
   attr_accessor :name, :age
+  attr_reader :id
 
   def can_use_services?
     if of_age || @parent_permission
