@@ -5,11 +5,11 @@ class Person
     @age = int
     @parent_permission = parent_permission
   end
-  attr_accessor :name, :age
-  attr_reader :id
+
+  # rubocop:disable Naming/PredicateName
 
   def can_use_services?
-    if of_age || @parent_permission
+    if is_of_age || @parent_permission
       true
     else
       false
@@ -18,7 +18,11 @@ class Person
 
   private
 
-  def of_age
-    of_age >= 18
+  def is_of_age
+    is_of_age >= 18
   end
+  # rubocop:enable Naming/PredicateName
 end
+
+attr_accessor :name, :age
+attr_reader :id
