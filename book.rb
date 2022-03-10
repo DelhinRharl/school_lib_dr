@@ -1,6 +1,6 @@
 require './rental'
 class Book
-  attr_accessor :label, :author
+  attr_accessor :label, :author, :title
   attr_reader :rentals
 
   def initalize(title, author)
