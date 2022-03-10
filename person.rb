@@ -1,3 +1,4 @@
+require './rental'
 class Namable
   def correct_name
     raise NotImplementedError
