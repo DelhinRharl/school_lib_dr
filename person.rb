@@ -1,65 +1,38 @@
+require './corrector'
 require './rental'
-class Namable
-  def correct_name
-    raise NotImplementedError
-  end
-end
 
-class Person < Namable
-  attr_accessor :name, :age
-  attr_reader :id
-
-  def initalize(_age, name = 'Unknown', parent_permission: true)
-    super()
+class Person
+  def initialize(age, name = 'Unknown', parent_permission: true)
     @id = Random.rand(1..1000)
     @name = name
-    @age = int
+    @age = age
     @parent_permission = parent_permission
+    @corrector = Corrector.new
+    @rentals = []
   end
 
-  # rubocop:disable Naming/PredicateName
+  attr_accessor :name, :age
+  attr_reader :id, :rentals
 
   def can_use_services?
-    if is_of_age || @parent_permission
+    if of_age || @parent_permission
       true
     else
       false
     end
   end
 
-  def correct_name
-    @name
+  def validate_name
+    @name = @corrector.correct_name(@name)
+  end
+
+  def add_rental(book, date)
+    Rental.new(date, book, self)
   end
 
   private
 
-  def is_of_age
-    is_of_age >= 18
-  end
-  # rubocop:enable Naming/PredicateName
-end
-
-class BaseDecorator < Namable
-  attr_accessor :namable
-
-  def initialize(namable)
-    super()
-    @namable = namable
-  end
-
-  def correct_name
-    @namable.correct_name
-  end
-end
-
-class CapitalizeDecorator < BaseDecorator
-  def correct_name
-    @namable.correct_name.upcase
-  end
-end
-
-class TrimmerDecorator < BaseDecorator
-  def correct_name
-    @namable.correct_name.strip if @namable.correct_name.length <= 10
+  def of_age?
+    @age >= 18
   end
 end
