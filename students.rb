@@ -22,3 +22,5 @@ end
 
 student = Student.new(20, 'delhin')
 puts student.name
+student = Student.new(22, 'rharl')
+puts student.age
