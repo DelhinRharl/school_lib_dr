@@ -7,11 +7,11 @@ require './rental'
 
 class App
   def list_books
-    if @books.length.eql?(0)
+    if @books.length.zero?
       puts 'No Books! Please add a book'
     else
-      @books.each_with_index do |_book, index|
-        puts "#{index + 1} - Title: #{books.title}, Author: #{books.author}"
+      @books.each_with_index do |index, book |
+        puts "#{index + 1} - Title: #{book.title}, Author: #{book.author}"
       end
     end
   end
@@ -31,7 +31,7 @@ class App
   end
 
   def person_object(id)
-    @persons.each do |person|
+    
       return person if person.id == id
     end
     nil
@@ -64,7 +64,7 @@ class App
     age = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(age, specialization, name)
+    Teacher.new(name,age)
   end
 
   def add_new_student

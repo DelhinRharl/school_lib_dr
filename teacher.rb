@@ -3,7 +3,7 @@ require './person'
 class Teacher < Person
   attr_reader :classroom
 
-  def initalize(age, specialization, name = 'Unknown')
+  def initalize(age, specialization, name ='Unknown')
     super(age, name)
     @specialization = specialization
   end
