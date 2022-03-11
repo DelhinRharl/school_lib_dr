@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require './person'
 
 class Student < Person
