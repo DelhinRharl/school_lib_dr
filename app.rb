@@ -5,7 +5,60 @@ require './teacher'
 require './book'
 require './rental'
 
+# rubocop:disable Metrics/ClassLength
+
 class App
+  def list_books
+    if @books.length.eql?(0)
+      puts 'No Books! Please add a book'
+    else
+      @books.each_with_index do |_book, index|
+        puts "#{index + 1} - Title: #{books.title}, Author: #{books.author}"
+      end
+    end
+  end
+
+  def list_persons
+    if @persons.length.zero?
+      puts 'No person found! Kindly add/create a Person'
+    else
+      @persons.each_with_index do |person, index|
+        if person.is_a?(Teacher)
+          puts "[Teacher] #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
+        else
+          puts "[Student] #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
+        end
+      end
+    end
+  end
+
+  def person_object(id)
+    @persons.each do |person|
+      return person if person.id == id
+    end
+    nil
+  end
+
+  def list_rentals
+    puts 'Choose by person ID: '
+    list_persons
+    print_message if @persons.length.zero?
+    id = gets.chomp.to_i
+    person = person_object(id)
+    if person.nil?
+      puts 'Error! Enter correct ID'
+      return
+    end
+    rentals = person.rentals
+    if rentals.length.zero?
+      puts 'No rentals under this name. Kindly add a rental'
+    else
+      rentals.each_with_index do |rent, index|
+        puts "#{index + 1} - Date: #{rent.date}, Book: #{rent.book.title} by #{rent.person.name}"
+      end
+    end
+  end
+
   def add_new_teacher
     print 'Teacher name: '
     name = gets.chomp
@@ -78,7 +131,6 @@ class App
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
-
   def handle_input(option)
     case option
     when 1
@@ -100,59 +152,7 @@ class App
          print_message
     end
   end
-
   # rubocop:enable Metrics/CyclomaticComplexity
-
-  def list_books
-    if @books.length.eql?(0)
-      puts 'No Books! Please add a book'
-    else
-      @books.each_with_index do |_book, index|
-        puts "#{index + 1} - Title: #{books.title}, Author: #{books.author}"
-      end
-    end
-  end
-
-  def list_persons
-    if @persons.length.zero?
-      puts 'No person found! Kindly add/create a Person'
-    else
-      @persons.each_with_index do |person, index|
-        if person.is_a?(Teacher)
-          puts "[Teacher] #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
-        else
-          puts "[Student] #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
-        end
-      end
-    end
-  end
-
-  def person_object(id)
-    @persons.each do |person|
-      return person if person.id == id
-    end
-    nil
-  end
-
-  def list_rentals
-    puts 'Choose by person ID: '
-    list_persons
-    print_message if @persons.length.zero?
-    id = gets.chomp.to_i
-    person = person_object(id)
-    if person.nil?
-      puts 'Error! Enter correct ID'
-      return
-    end
-    rentals = person.rentals
-    if rentals.length.zero?
-      puts 'No rentals under this name. Kindly add a rental'
-    else
-      rentals.each_with_index do |rent, index|
-        puts "#{index + 1} - Date: #{rent.date}, Book: #{rent.book.title} by #{rent.person.name}"
-      end
-    end
-  end
 
   def print_message
     puts "\nPlease enter a number to choose an option
@@ -175,3 +175,4 @@ class App
     print_message
   end
 end
+# rubocop:enable Metrics/ClassLength
