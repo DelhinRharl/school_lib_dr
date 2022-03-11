@@ -1,7 +1,6 @@
 require './person'
 
 class Teacher < Person
-
   attr_reader :classroom
 
   def initalize(age, specialization, name = 'Unknown', parent_permission: true)
@@ -19,5 +18,5 @@ class Teacher < Person
   end
 end
 
-student = Teacher.new('A',20)
+student = Teacher.new('A', 20)
 puts student.age
