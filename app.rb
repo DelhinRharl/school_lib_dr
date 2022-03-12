@@ -30,7 +30,7 @@ class App
   end
 
   def person_object(id)
-    @persons.each do |person|
+    
       return person if person.id == id
     end
     nil
@@ -63,7 +63,7 @@ class App
     age = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(age, specialization, name)
+    Teacher.new(name,age)
   end
 
   def create_student
