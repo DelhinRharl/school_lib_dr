@@ -39,7 +39,7 @@ run the command $irb (interactive ruby shell)
 run the program functions
 ```
 
-## Authors
+## Author
 
 👤 **Affxed Kiprotich**
 
