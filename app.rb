@@ -30,7 +30,7 @@ class App
   end
 
   def person_object(id)
-    
+    @persons.each do |person|
       return person if person.id == id
     end
     nil
@@ -63,7 +63,7 @@ class App
     age = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(name,age)
+    Teacher.new(age, specialization, name)
   end
 
   def create_student
@@ -172,5 +172,4 @@ class App
     print_message
   end
 end
-
 # rubocop:enable Metrics/ClassLength
