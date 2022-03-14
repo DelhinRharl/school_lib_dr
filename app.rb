@@ -63,7 +63,7 @@ class App
     age = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(age, specialization, name)
+    Teacher.new(age,specialization, name)
   end
 
   def create_student
