@@ -126,30 +126,6 @@ class App
     puts "New rental added succesfully -
     book: #{@books[book_index - 1].title}, Person: #{@persons[person_index - 1].name}, Date: #{date}"
   end
-  # rubocop:disable Metrics/CyclomaticComplexity
-
-  def handle_input(option)
-    case option
-    when 1
-      list_books
-    when 2
-      list_persons
-    when 3
-      create_person
-    when 4
-      add_new_book
-    when 5
-      add_new_rental
-    when 6
-      list_rentals
-    when 7
-      puts 'Thank you for using the Library!'
-      exit
-    else puts 'Kindly enter a valid option'
-         print_message
-    end
-  end
-  # rubocop:enable Metrics/CyclomaticComplexity
 
   def print_message
     puts "\nPlease enter a number to choose an option
