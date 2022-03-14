@@ -3,7 +3,6 @@ require './teacher'
 require './book'
 require './rental'
 
-# rubocop:disable Metrics/ClassLength
 class App
   def list_books
     if @books.length.zero?
@@ -63,7 +62,7 @@ class App
     age = gets.chomp
     print 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(age,specialization, name)
+    Teacher.new(age, specialization, name)
   end
 
   def create_student
@@ -148,4 +147,3 @@ class App
     print_message
   end
 end
-# rubocop:enable Metrics/ClassLength
