@@ -3,6 +3,7 @@ require './teacher'
 require './book'
 require './rental'
 
+
 class App
   def list_books
     if @books.length.zero?
@@ -22,7 +23,7 @@ class App
         if person.is_a?(Teacher)
           puts "Teacher #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
         else
-          puts "[Student] #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
+          puts "Student #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
         end
       end
     end
@@ -54,33 +55,54 @@ class App
       end
     end
   end
+  
+  
 
-  def add_teacher
-    print "Teacher'\s Name: "
+  def input(person)
+    print person + 'name:'
     name = gets.chomp
-    print 'Teacher\'s Age: '
+    print person + 'age:'
     age = gets.chomp
-    print 'Specialization: '
-    specialization = gets.chomp
-    Teacher.new(age, specialization, name)
-  end
-
-  def create_student
-    print 'Student name: '
-    name = gets.chomp
-    print 'Student age: '
-    age = gets.chomp
-    print 'Parent permission [y/n]:'
-    permission = gets.chomp
-    case permission
+    if person === "Teacher"
+      puts  person + 'Specialization'
+      Teacher.new(age, specialization, name)
+      else if person === 'Student'
+        print 'Parent permission [y/n]:'
+     permission = gets.chomp
+     case permission
     when 'y'
       Student.new(age, name)
     when 'n'
       Student.new(age, name, parent_permission: false)
-    else
-      puts 'Please select a valid option.'
-      create_student
-    end
+    
+  end
+
+end 
+end
+
+end
+
+  def add_teacher
+    Teacher.new(age, specialization, name)
+  end
+
+  def create_student
+    # print 'Student name: '
+    # name = gets.chomp
+    # print 'Student age: '
+    # age = gets.chomp
+    # print 'Parent permission [y/n]:'
+    # permission = gets.chomp
+    # case permission
+    # when 'y'
+    #   Student.new(age, name)
+    # when 'n'
+    #   Student.new(age, name, parent_permission: false)
+    # else
+      # puts 'Please select a valid option.'
+      # input(student = 'Student')
+    #   create_student
+    # end
   end
 
   def create_person
@@ -90,10 +112,12 @@ class App
     option = gets.chomp.to_i
     case option
     when 1
-      @persons.push(add_teacher)
+      # input(teacher)
+      @persons.push(input(person = 'Teacher'))
       puts 'New teacher Added!'
     when 2
-      @persons.push(create_student)
+      # input(student)
+      @persons.push(input(person = 'Student'))
       puts 'New Student Added!'
     else
       puts 'Please choose a valid option'
