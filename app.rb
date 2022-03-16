@@ -22,7 +22,7 @@ class App
         if person.is_a?(Teacher)
           puts "Teacher #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
         else
-          puts "[Student] #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
+          puts "Student #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
         end
       end
     end
@@ -55,49 +55,53 @@ class App
     end
   end
 
-  def add_teacher
-    print "Teacher'\s Name: "
-    name = gets.chomp
-    print 'Teacher\'s Age: '
-    age = gets.chomp
-    print 'Specialization: '
-    specialization = gets.chomp
+  def add_teacher(age, specialization, name)
     Teacher.new(age, specialization, name)
   end
 
-  def create_student
-    print 'Student name: '
+  def input_teacher
+    print ' Teacher name:'
     name = gets.chomp
-    print 'Student age: '
+    print ' teacher age:'
     age = gets.chomp
+    print 'Specialization: '
+    specialization = gets.chomp
+    add_teacher(age, name, specialization)
+  end
+
+  def add_student(name, age)
     print 'Parent permission [y/n]:'
     permission = gets.chomp
     case permission
     when 'y'
-      Student.new(age, name)
+      Student.new(name, age)
     when 'n'
-      Student.new(age, name, parent_permission: false)
-    else
-      puts 'Please select a valid option.'
-      create_student
+      Student.new(name, age, parent_permission: false)
     end
   end
 
+  def student_input
+    print 'Student Name: '
+    name = gets.chomp
+    print ' Student Age: '
+    age = gets.chomp
+    add_student(age, name)
+  end
+
   def create_person
-    puts "\nPlease choose a option by entring a number
+    puts "\nPlease choose a option
     1 -  Create A Teacher:
     2 -  Create a student"
     option = gets.chomp.to_i
     case option
     when 1
-      @persons.push(add_teacher)
+      @persons.push(input_teacher)
       puts 'New teacher Added!'
     when 2
-      @persons.push(create_student)
+      @persons.push(student_input)
       puts 'New Student Added!'
     else
       puts 'Please choose a valid option'
-      create_person
     end
   end
 
