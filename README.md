@@ -41,7 +41,7 @@ run the program functions
 
 ## Author
 
-👤 **Affxed Kiprotich**
+👤 **Affaxed Kiprotich**
 
 - GitHub: [@DelhinRharl](https://github.com/DelhinRharl)
 - Twitter: [@affaxed-kip](https://twitter.com/affaxed-kip)
