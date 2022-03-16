@@ -74,7 +74,7 @@ class App
     name = gets.chomp
     print ' Student Age:'
     age = gets.chomp
-    add_student(age, name)
+    add_student(name, age)
   end
 
   def add_student(age, name)
@@ -87,7 +87,6 @@ class App
       Student.new(age, name, parent_permission: false)
     end
   end
-
 
   def create_person
     puts "\nPlease choose a option by entring a number
