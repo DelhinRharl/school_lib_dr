@@ -45,7 +45,7 @@ run the program functions
 
 - GitHub: [@DelhinRharl](https://github.com/DelhinRharl)
 - Twitter: [@affaxed-kip](https://twitter.com/affaxed-kip)
-- LinkedIn: [Affxed Kiprotich](https://www.linkedin.com/in/affaxed-kiprotich/)
+- LinkedIn: [Affaxed Kiprotich](https://www.linkedin.com/in/affaxed-kiprotich/)
 
 ## 🤝 Contributing
 
