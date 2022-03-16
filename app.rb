@@ -55,7 +55,9 @@ class App
     end
   end
 
-  def add_teacher(age, specialization, name)
+  def add_teacher(age, name)
+    print 'Specialization: '
+    specialization = gets.chomp
     Teacher.new(age, specialization, name)
   end
 
@@ -64,9 +66,7 @@ class App
     name = gets.chomp
     print ' teacher age:'
     age = gets.chomp
-    print 'Specialization: '
-    specialization = gets.chomp
-    add_teacher(age, name, specialization)
+    add_teacher(age, name)
   end
 
   def add_student(name, age)
