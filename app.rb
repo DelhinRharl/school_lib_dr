@@ -3,7 +3,6 @@ require './teacher'
 require './book'
 require './rental'
 
-
 class App
   def list_books
     if @books.length.zero?
@@ -55,55 +54,40 @@ class App
       end
     end
   end
-  
-  
 
-  def input(person)
-    print person + 'name:'
+  def add_teacher(age, specialization, name)
+    Teacher.new(age, specialization, name)
+  end
+
+  def input_teacher
+    print ' Teacher name:'
     name = gets.chomp
-    print person + 'age:'
+    print ' teacher age:'
     age = gets.chomp
-    if person === "Teacher"
-      puts  person + 'Specialization'
-      Teacher.new(age, specialization, name)
-      else if person === 'Student'
-        print 'Parent permission [y/n]:'
-     permission = gets.chomp
-     case permission
+    print 'Specialization: '
+    specialization = gets.chomp
+    add_teacher(age, name, specialization)
+  end
+
+  def student_input
+    print 'Student Name:'
+    name = gets.chomp
+    print ' Student Age:'
+    age = gets.chomp
+    add_student(age, name)
+  end
+
+  def add_student(age, name)
+    print 'Parent permission [y/n]:'
+    permission = gets.chomp
+    case permission
     when 'y'
       Student.new(age, name)
     when 'n'
       Student.new(age, name, parent_permission: false)
-    
+    end
   end
 
-end 
-end
-
-end
-
-  def add_teacher
-    Teacher.new(age, specialization, name)
-  end
-
-  def create_student
-    # print 'Student name: '
-    # name = gets.chomp
-    # print 'Student age: '
-    # age = gets.chomp
-    # print 'Parent permission [y/n]:'
-    # permission = gets.chomp
-    # case permission
-    # when 'y'
-    #   Student.new(age, name)
-    # when 'n'
-    #   Student.new(age, name, parent_permission: false)
-    # else
-      # puts 'Please select a valid option.'
-      # input(student = 'Student')
-    #   create_student
-    # end
-  end
 
   def create_person
     puts "\nPlease choose a option by entring a number
@@ -112,16 +96,13 @@ end
     option = gets.chomp.to_i
     case option
     when 1
-      # input(teacher)
-      @persons.push(input(person = 'Teacher'))
+      @persons.push(input_teacher)
       puts 'New teacher Added!'
     when 2
-      # input(student)
-      @persons.push(input(person = 'Student'))
+      @persons.push(student_input)
       puts 'New Student Added!'
     else
       puts 'Please choose a valid option'
-      create_person
     end
   end
 
