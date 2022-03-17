@@ -1,6 +1,7 @@
 require './app'
 require './preserve_persons'
 require './preserve_books'
+require './preserve_rentals'
 
 def main
   app = App.new
@@ -26,6 +27,7 @@ def handle_input(option)
   when 7
     preserve_persons
     preserve_books
+    preserve_rentals
     puts 'Thank you for using the Library!'
     exit
   else puts 'Kindly enter a valid option'
