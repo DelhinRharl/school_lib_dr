@@ -17,9 +17,11 @@ class App
 
   def preserve_persons
     File.open('persons.json', 'w') do |file|
-      @persons.each do |person|
-        file.puts person.to_json
+     person_store = @persons.map do |person|
+         ({ name: person.name, age: person.age})
+        # puts person.read
       end
+     file.puts(JSON.pretty_generate(person_store))
     end
   end
 
@@ -74,7 +76,7 @@ class App
     print ' Teacher name:'
     name = gets.chomp
     print ' teacher age:'
-    age = gets.chomp
+    age = gets.chomp.to_i
     add_teacher(age, name)
   end
 
@@ -94,7 +96,7 @@ class App
     print 'Student Name: '
     name = gets.chomp
     print ' Student Age: '
-    age = gets.chomp
+    age = gets.chomp.to_i
     add_student(age, name)
   end
 
