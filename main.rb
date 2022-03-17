@@ -1,5 +1,5 @@
 require './app'
-
+require './preserve'
 def main
   app = App.new
   app.run

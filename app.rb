@@ -15,16 +15,6 @@ class App
     end
   end
 
-  def preserve_persons
-    File.open('persons.json', 'w') do |file|
-     person_store = @persons.map do |person|
-         ({ name: person.name, age: person.age})
-        # puts person.read
-      end
-     file.puts(JSON.pretty_generate(person_store))
-    end
-  end
-
   def list_persons
     if @persons.length.zero?
       puts 'No person found! Kindly add/create a Person'
