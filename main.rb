@@ -2,6 +2,8 @@ require './app'
 require './preserve_persons'
 require './preserve_books'
 require './preserve_rentals'
+require './read_data'
+
 
 def main
   app = App.new
@@ -18,6 +20,7 @@ def handle_input(option)
     list_persons
   when 3
     create_person
+     preserve_persons
   when 4
     add_new_book
   when 5
@@ -25,7 +28,6 @@ def handle_input(option)
   when 6
     list_rentals
   when 7
-    preserve_persons
     preserve_books
     preserve_rentals
     puts 'Thank you for using the Library!'

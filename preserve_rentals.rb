@@ -1,8 +1,8 @@
 def preserve_rentals
   File.open('./data/rentals.json', 'w') do |file|
-    rental_store = @persons.each_with_index do |person|
+    rental_store = @persons.map do |person|
         rentals = person.rentals
-        new_rent =rentals.each_with_index do |rent,id|
+        new_rent =rentals.map do |rent,id|
             ({
             Date: rent.date,
             Book: rent.book.title,

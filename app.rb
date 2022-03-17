@@ -3,6 +3,8 @@ require './teacher'
 require './book'
 require './rental'
 require 'json'
+# require './read_data'
+require 'pry'
 
 class App
   def list_books
@@ -25,7 +27,7 @@ class App
         else
           puts "Student #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
         end
-        end
+      end
     end
   end
 
@@ -75,7 +77,7 @@ class App
     permission = gets.chomp
     case permission
     when 'y'
-      Student.new(name, age)
+      Student.new(name, age, parent_permission: true)
       # write student data into file
     when 'n'
       Student.new(name, age, parent_permission: false)
@@ -148,7 +150,7 @@ class App
 
   def run
     @books = []
-    @persons = []
+    @persons = read_person
     puts 'Entering the Library'
     print_message
   end
