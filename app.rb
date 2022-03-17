@@ -2,6 +2,7 @@ require './students'
 require './teacher'
 require './book'
 require './rental'
+require 'json'
 
 class App
   def list_books
@@ -10,6 +11,14 @@ class App
     else
       @books.each_with_index do |book, index|
         puts "#{index + 1} - Title: #{book.title}, Author: #{book.author}"
+      end
+    end
+  end
+
+  def preserve_persons
+    File.open('persons.json', 'w') do |file|
+      @persons.each do |person|
+        file.puts person.to_json
       end
     end
   end
@@ -24,7 +33,7 @@ class App
         else
           puts "Student #{index + 1} - ID: #{person.id}, Name: #{person.name}, Age: #{person.age}"
         end
-      end
+        end
     end
   end
 
@@ -75,6 +84,7 @@ class App
     case permission
     when 'y'
       Student.new(name, age)
+      # write student data into file
     when 'n'
       Student.new(name, age, parent_permission: false)
     end

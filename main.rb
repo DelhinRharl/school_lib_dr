@@ -22,6 +22,7 @@ def handle_input(option)
   when 6
     list_rentals
   when 7
+    preserve_persons
     puts 'Thank you for using the Library!'
     exit
   else puts 'Kindly enter a valid option'
