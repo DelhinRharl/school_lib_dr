@@ -2,15 +2,17 @@ require_relative '../person'
 require_relative '../students'
 
 describe Person do
-  context 'When testing the Person class' do
-    age = 22
-    name = 'Affaxed'
-    parent_permission = true
-    person = Person.new(age, name, parent_permission: parent_permission)
-    person_two = Person.new(15, name, parent_permission: false)
+  context 'Testing the Person class' do
+    person = Person.new(23, 'Adam', parent_permission: true)
 
-    it 'check name' do
-      expect (person.name).to eq name
+    it 'has the class Person' do
+      expect(person.class) == Person
+    end
+
+    it 'should have the right name, age and permission' do
+      expect(person.age).to eq 23
+      expect(person.name).to eq 'Adam'
+      expect(person.parent_permission).to eq true
     end
   end
 end

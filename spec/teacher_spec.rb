@@ -1,17 +1,18 @@
 require './teacher'
 
-describe "When adding teacher" do
+describe "should create teacher" do
+  context 'Testing the Teacher class' do
+    teacher = Teacher.new(30, 'JavaScript', 'Teddy')
 
-  it "should create a new teacher" do
-    teacher = Teacher.new(20, 'JavaScript', 'Ricky', 'Mormor')
-    expect(teacher.name).to eq('Ricky Mormor')
-    expect(teacher.age).to eq(20)
-    expect(teacher.specialization).to eq('JavaScript')
+    it "should have Teacher class" do
+      expect(teacher.class) == Teacher
     end
 
-    it "should validate the teacher's age" do
-      teacher = Teacher.new(20, 'JavaScript', 'Ricky', 'Mormor')
-      expect(teacher.age).to eq(20)
+    it "should validate the teacher's age, specialization and name" do
+      expect(teacher.name).to eq('Teddy')
+      expect(teacher.age).to eq(30)
+      expect(teacher.specialization).to eq('JavaScript')
     end
+  end
   
 end
