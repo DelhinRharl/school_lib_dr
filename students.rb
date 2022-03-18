@@ -17,3 +17,5 @@ class Student < Person
     "¯\(ツ)/¯"
   end
 end
+
+# rubocop:enable Lint/UnusedMethodArgument
