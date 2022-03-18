@@ -3,8 +3,9 @@ require './person'
 class Student < Person
   attr_reader :classroom
 
+  # rubocop:disable Lint/UnusedMethodArgument
   def initialize(age, name = 'Unknown', parent_permission: true)
-    super(age, name, parent_permission)
+    super(age, name, parent_permission: true)
   end
 
   def classroom=(studentclass)
@@ -16,3 +17,5 @@ class Student < Person
     "¯\(ツ)/¯"
   end
 end
+
+# rubocop:enable Lint/UnusedMethodArgument
