@@ -1,16 +1,14 @@
-require './rental'
+class Classroom
+  attr_accessor :label
+  attr_reader :students
 
-class Book
-  attr_accessor :title, :author
-  attr_reader :rentals
-
-  def initialize(title, author)
-    @title = title
-    @author = author
-    @rentals = []
+  def initialize(label)
+    @label = label
+    @students = []
   end
 
-  def add_rental(person, date)
-    Rental.new(date, person, self)
+  def add_student(student)
+    @students.push(student)
+    student.classroom = self
   end
 end

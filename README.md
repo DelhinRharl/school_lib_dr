@@ -39,13 +39,20 @@ run the command $irb (interactive ruby shell)
 run the program functions
 ```
 
-## Author
+## Authors
 
 👤 **Affaxed Kiprotich**
 
 - GitHub: [@DelhinRharl](https://github.com/DelhinRharl)
 - Twitter: [@affaxed-kip](https://twitter.com/affaxed-kip)
 - LinkedIn: [Affaxed Kiprotich](https://www.linkedin.com/in/affaxed-kiprotich/)
+
+👤 **Ricky Mormor**
+
+- GitHub: [@cwaku](https://github.com/cwaku)
+- LinkedIn: [Ricky Mormor](www.linkedin.com/in/rickymormor)
+- Instagram: [@rickymormor](https://instagram.com/rickymormor)
+- Twitter: [@rickymormor](https://twitter.com/rickymormor)
 
 ## 🤝 Contributing
 
